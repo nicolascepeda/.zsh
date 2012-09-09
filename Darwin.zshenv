@@ -4,9 +4,11 @@
 # to protect $PATH ordering).
 
 # Haskell
+MAC_PORTS='/opt/local/bin:/opt/local/sbin'
 export CABAL_HOME="$HOME/.cabal"
 export HASKELL_HOME="$HOME/Library/Haskell"
-export PATH="$CABAL_HOME/bin:$HASKELL_HOME/bin:$PATH"
+
+export PATH="$CABAL_HOME/bin:$HASKELL_HOME/bin:$MAC_PORTS:$PATH"
 
 # ImageMagick
 #export MAGICK_HOME="/Applications/ImageMagick"
