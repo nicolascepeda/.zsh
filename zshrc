@@ -1,6 +1,7 @@
 #!/bin/zsh
 
-export PATH="$HOME/.bin:$PATH"
+#export PATH="$HOME/.bin:$PATH"
+source $HOME/.zsh/zshenv
 
 SYSTEM_DEPENDENT="$HOME/.zsh/$(uname).zshrc"
 HOST_DEPENDENT="$HOME/.zsh/$HOST.zshrc"
