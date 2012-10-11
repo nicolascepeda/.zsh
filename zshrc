@@ -63,7 +63,17 @@ setopt \
   promptsubst \
   completealiases
 
+# Enable emacs like bindkey
 bindkey -e
+bindkey "^T" backward-word
+bindkey "^N" forward-word
+
+bindkey "^D" backward-char
+bindkey "^H" forward-char
+
+bindkey "^L" kill-whole-line
+bindkey "^K" kill-word
+bindkey "^V" backward-kill-word
 
 # change $fpath before calling compinit
 fpath=($HOME/.zsh/functions $fpath)
