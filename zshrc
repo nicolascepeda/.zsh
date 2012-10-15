@@ -12,7 +12,7 @@ fi
 
 if [[ -a $HOST_DEPENDENT ]]; then
     source $HOST_DEPENDENT
-fi 
+fi
 
 ##>> Editor
 # Emacs & emacsclient invocation
@@ -42,6 +42,11 @@ alias pp='p $path'
 # editor
 alias e='EMACS_SERVER_NAME="DEFAULT"; $EDITOR'
 alias E='$EDITORG'
+
+alias scm='git'
+alias scms='scm status'
+alias scmc='scm commit -a -m '
+alias scmp='scm push origin'
 
 ##>> Shell customization
 # shell history
