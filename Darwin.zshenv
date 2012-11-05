@@ -3,12 +3,23 @@
 # adds the stuff in front of the $PATH (I'm tired of trying
 # to protect $PATH ordering).
 
-# Haskell
+# Java 
+# Once Apple removes Java Preferences pane the command below will
+# no longer work. This currently evaluates to Java 7. JVMs are
+# located in '/Library/Java/JavaVirtualMachines/*' by default.
+JAVA_HOME=$(/usr/libexec/java_home)
+#JAVA_HOME='/Library/Java/JavaVirtualMachines/java/Contents/Home'
+export PATH="$JAVA_HOME/bin:$PATH"
+
+
+# Mac Ports
 MAC_PORTS='/opt/local/bin:/opt/local/sbin'
+export PATH="$MAC_PORTS:$PATH"
+
+# Haskell
 export CABAL_HOME="$HOME/.cabal"
 export HASKELL_HOME="$HOME/Library/Haskell"
-
-export PATH="$CABAL_HOME/bin:$HASKELL_HOME/bin:$MAC_PORTS:$PATH"
+export PATH="$CABAL_HOME/bin:$HASKELL_HOME/bin"
 
 # ImageMagick
 #export MAGICK_HOME="/Applications/ImageMagick"
