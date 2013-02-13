@@ -19,7 +19,7 @@ export PATH="$MAC_PORTS:$PATH"
 # Haskell
 export CABAL_HOME="$HOME/.cabal"
 export HASKELL_HOME="$HOME/Library/Haskell"
-export PATH="$CABAL_HOME/bin:$HASKELL_HOME/bin"
+export PATH="$CABAL_HOME/bin:$HASKELL_HOME/bin:$PATH"
 
 # ImageMagick
 #export MAGICK_HOME="/Applications/ImageMagick"

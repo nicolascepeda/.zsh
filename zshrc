@@ -101,6 +101,60 @@ hash colordiff 2>/dev/null >/dev/null && alias diff='colordiff'
 #     online.
 # - Merci gäu dän
 
+
+if (( $+commands[git] ))
+then
+  git="$commands[git]"
+else
+  git="/usr/bin/git"
+fi
+
+git_branch() {
+  echo $($git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+}
+
+git_dirty() {
+  st=$($git status 2>/dev/null | tail -n 1)
+  if [[ $st == "" ]]
+  then
+    echo ""
+  else
+    if [[ "$st" =~ ^nothing ]]
+    then
+      echo "%{$reset_color%} on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
+    else
+      echo "%{$reset_color%} on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
+    fi
+  fi
+}
+
+git_prompt_info () {
+ ref=$($git symbolic-ref HEAD 2>/dev/null) || return
+# echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
+ echo "${ref#refs/heads/}"
+}
+
+# Compute the length of git status information shown in prompt
+git_prompt_size () {
+ local zero='%([BSUbfksu]|([FB]|){*})' # removes escape characters
+ promptgit="$(git_dirty)"
+ ${#${(S%%)promptgit//$~zero/}}
+}
+
+unpushed () {
+  $git cherry -v @{upstream} 2>/dev/null
+}
+
+need_push () {
+  if [[ $(unpushed) == "" ]]
+  then
+    echo ""
+  else
+    echo " %{$fg_bold[magenta]%}unpushed%{$reset_color%} "
+  fi
+}
+
+
 # calculate cmd extends
 function precmd {
  local TERMWIDTH
@@ -111,13 +165,18 @@ function precmd {
  PR_PWDLEN=""
 
  # compute size of prompt and pwd
+
  local promptsize=${#${(%):-%n@%m }}
  local pwdsize=${#${(%):-%~}}
 
- if [[ "$promptsize + $pwdsize" -gt $TERMWIDTH ]]; then
+ local zero='%([BSUbfksu]|([FB]|){*})' # removes escape characters
+ promptgit="$(git_dirty)"
+ local promptgitsize=${#${(S%%)promptgit//$~zero/}}
+
+  if [[ "$promptsize + $pwdsize + $promptgitsize" -gt $TERMWIDTH ]]; then
      ((PR_PWDLEN=$TERMWIDTH - $promptsize))
  else
-     PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize)))..${PR_HBAR}.)}"
+     PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize + $promptgitsize)))..${PR_HBAR}.)}"
  fi
 
  # print a 'bell' character:
@@ -166,12 +225,11 @@ setprompt () {
  PR_URCORNER=${altchar[k]:--}
 
  # left prompt
- PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
+ PROMPT='$PR_SET_CHARSET\
 %(!.%SROOT%s.%n)$PR_LIGHT_YELLOW@%m\
-$PR_NO_COLOUR %$PR_PWDLEN<...<\
-$PR_NO_COLOUR${${(%):-%~}/${(D)PRJ_HOME}/$PR_GREEN${(D)PRJ_HOME}\
-$PR_LIGHT_YELLOW}%<<$PR_NO_COLOUR $PR_SHIFT_IN${(e)PR_FILLBAR}$PR_SHIFT_OUT
-$PR_NO_COLOUR%!$PR_GREEN${PRJ_NAME+ ${PRJ_NAME}} %(!.$PR_RED.$PR_WHITE)%#$PR_NO_COLOUR '
+$PR_NO_COLOUR %$PR_PWDLEN<...<$PR_YELLOW${(%):-%~}$(git_dirty)\
+%<<$PR_NO_COLOUR $PR_SHIFT_IN${(e)PR_FILLBAR}$PR_SHIFT_OUT
+$PR_NO_COLOUR%! %(!.$PR_RED.$PR_WHITE)%#$PR_NO_COLOUR '
  #PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[yellow]%}%m %{$fg[green]%}%~ %{$reset_color%}%% "
 
  # right prompt
