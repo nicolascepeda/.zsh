@@ -154,7 +154,7 @@ git_prompt_size () {
  promptgit="$(git_dirty)"
  ${#${(S%%)promptgit//$~zero/}}
 }
-
+ 
 unpushed () {
   $git cherry -v @{upstream} 2>/dev/null
 }
