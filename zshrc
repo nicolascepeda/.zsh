@@ -167,7 +167,7 @@ git_need_push () {
     echo " %{$fg_bold[magenta]%}!%{$reset_color%}"
   fi
 }
-
+ 
 
 # calculate cmd extends
 function precmd {
