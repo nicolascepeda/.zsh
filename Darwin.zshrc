@@ -7,15 +7,17 @@ _editor() {
             $@
 }
 
+export EDITOR='/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl'
+
 ###>> Colorized 'ls'
 export LSCOLORS='cxfxcxdxbxegedabagacad'
 
 ###>> Aliases
 alias ls='ls -G'
 
-alias s='sudo port '
-alias si='s install '
-alias ss='s search '
-alias sp='s contents '
-alias S='port -d selfupdate'
+alias sys='sudo port '
+alias sysi='s install '
+alias syss='s search '
+alias sysp='s contents '
+alias sysS='port -d selfupdate'
 

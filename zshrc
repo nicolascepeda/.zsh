@@ -17,38 +17,43 @@ fi
 ##>> Editor
 # Emacs & emacsclient invocation
 # Usually editorG is called prior to an invokation of editor
-editor() {
-    _editor $@
-}
+#editor() {
+#    _editor $@
+#}
 
-editorG() {
-    _editorG $@
-}
+#editorG() {
+#    _editorG $@
+#}
 
-export EDITOR=editor
-export EDITORG=editorG
+#export EDITOR=editor
+#export EDITORG=editorG
 
 ###>> Aliases
 alias sudo='sudo '
+
+# Platform specific aliases
+#alias sys=
+#alias sysi=
+#alias syss=
+#alias sysp=
+#alias sysS=
 
 alias mc='LC_ALL=en_US.utf8 LANG=en_UK.utf8 mc'
 
 alias ll='ls -lha'
 alias l='ls -lh'
 
-# project
-alias cdp='cd $HOME/prj'
+alias cdp='cd $HOME/data/int/projects'
 alias p='print -l'
 alias pp='p $path'
 
 # editor
-alias e='EMACS_SERVER_NAME="DEFAULT"; $EDITOR'
-alias E='$EDITORG'
+alias e='$EDITOR'
 
-alias scm='git'
-alias scms='scm status'
-alias scmc='scm commit -a -m '
-alias scmp='scm push origin'
+alias s='git'
+alias ss='s status'
+alias sc='s commit -a -m '
+alias sp='s push origin'
 
 ##>> Shell customization
 # shell history
@@ -70,17 +75,26 @@ setopt \
   promptsubst \
   completealiases
 
-# Enable emacs like bindkey
-bindkey -e
-bindkey "^T" backward-word
-bindkey "^N" forward-word
+# Use vi like for command line 
+bindkey -v
 
-bindkey "^D" backward-char
-bindkey "^H" forward-char
+# Make jj instead of esc go into normal-mode
+bindkey -M viins 'jj' vi-cmd-mode
 
-bindkey "^L" kill-whole-line
-bindkey "^K" kill-word
-bindkey "^V" backward-kill-word
+bindkey "^r" history-incremental-search-backward
+# Moving around
+#bindkey "^L" forward-char
+#bindkey "^H" backward-char
+#bindkey "^W" forward-word
+#bindkey "^B" backward-word
+
+# Killing
+#bindkey "^D" kill-char
+#bindkey "^X" kill-char
+#bindkey "^X" backward-kill-char
+#bindkey "^K" kill-word
+#bindkey "^D" backward-kill-word
+#bindkey "^L" kill-whole-line
 
 # change $fpath before calling compinit
 fpath=($HOME/.zsh/functions $fpath)
