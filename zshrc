@@ -159,12 +159,12 @@ unpushed () {
   $git cherry -v @{upstream} 2>/dev/null
 }
 
-need_push () {
+git_need_push () {
   if [[ $(unpushed) == "" ]]
   then
     echo ""
   else
-    echo " %{$fg_bold[magenta]%}unpushed%{$reset_color%} "
+    echo " %{$fg_bold[magenta]%}!%{$reset_color%}"
   fi
 }
 
@@ -184,7 +184,7 @@ function precmd {
  local pwdsize=${#${(%):-%~}}
 
  local zero='%([BSUbfksu]|([FB]|){*})' # removes escape characters
- promptgit="$(git_dirty)"
+ local promptgit="$(git_dirty)$(git_need_push)"
  local promptgitsize=${#${(S%%)promptgit//$~zero/}}
 
   if [[ "$promptsize + $pwdsize + $promptgitsize" -gt $TERMWIDTH ]]; then
@@ -241,7 +241,7 @@ setprompt () {
  # left prompt
  PROMPT='$PR_SET_CHARSET\
 %(!.%SROOT%s.%n)$PR_LIGHT_YELLOW@%m\
-$PR_NO_COLOUR %$PR_PWDLEN<...<$PR_YELLOW${(%):-%~}$(git_dirty)\
+$PR_NO_COLOUR %$PR_PWDLEN<...<$PR_YELLOW${(%):-%~}$(git_dirty)$(git_need_push)\
 %<<$PR_NO_COLOUR $PR_SHIFT_IN${(e)PR_FILLBAR}$PR_SHIFT_OUT
 $PR_NO_COLOUR%! %(!.$PR_RED.$PR_WHITE)%#$PR_NO_COLOUR '
  #PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[yellow]%}%m %{$fg[green]%}%~ %{$reset_color%}%% "
