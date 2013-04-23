@@ -15,6 +15,8 @@ export LSCOLORS='cxfxcxdxbxegedabagacad'
 ###>> Aliases
 alias ls='ls -G'
 
+alias tmp='cd $HOME/Downloads'
+
 alias sys='sudo port '
 alias sysi='s install '
 alias syss='s search '

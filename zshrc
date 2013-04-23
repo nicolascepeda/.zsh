@@ -37,6 +37,7 @@ alias sudo='sudo '
 #alias syss=
 #alias sysp=
 #alias sysS=
+#alias tmp=
 
 alias mc='LC_ALL=en_US.utf8 LANG=en_UK.utf8 mc'
 
