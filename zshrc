@@ -44,7 +44,8 @@ alias mc='LC_ALL=en_US.utf8 LANG=en_UK.utf8 mc'
 alias ll='ls -lha'
 alias l='ls -lh'
 
-alias cdp='cd $HOME/data/int/projects'
+alias cdd='cd $HOME/data/Documents'
+alias cdp='cd $HOME/data/projects'
 alias p='print -l'
 alias pp='p $path'
 
