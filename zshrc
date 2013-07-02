@@ -14,6 +14,15 @@ if [[ -a $HOST_DEPENDENT ]]; then
     source $HOST_DEPENDENT
 fi
 
+# Make ssh keys known to ssh-agent.
+# This will load the keys defined in $HOME/.ssh/keys
+# Expects absolute path to key file, one per line, e.g.
+# > cat ~/.ssh/keys
+# /home/me/mykey
+# /home/me/myotherkey
+ssh-add -D 1&> /dev/null
+cat $HOME/.ssh/keys | xargs ssh-add 1&> /dev/null
+
 ##>> Editor
 # Emacs invocation is deferred to the target platform's _editor 
 # implementation
