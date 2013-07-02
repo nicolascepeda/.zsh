@@ -1,13 +1,12 @@
 #!/bin/zsh
 
 _editor() {
-    /usr/bin/emacsclient \
+    $EMACS_HOME/bin/emacsclient \
             --no-wait \
-            --alternate-editor=/usr/bin/emacs \
-            $@
+            --socket-name=emacs-server \
+            --alternate-editor=$EMACS_HOME/Emacs \
+            $@ &
 }
-
-export EDITOR='/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl'
 
 ###>> Colorized 'ls'
 export LSCOLORS='cxfxcxdxbxegedabagacad'

@@ -15,18 +15,13 @@ if [[ -a $HOST_DEPENDENT ]]; then
 fi
 
 ##>> Editor
-# Emacs & emacsclient invocation
-# Usually editorG is called prior to an invokation of editor
-#editor() {
-#    _editor $@
-#}
+# Emacs invocation is deferred to the target platform's _editor 
+# implementation
+editor() {
+    _editor $@
+}
 
-#editorG() {
-#    _editorG $@
-#}
-
-#export EDITOR=editor
-#export EDITORG=editorG
+export EDITOR=editor
 
 ###>> Aliases
 alias sudo='sudo '

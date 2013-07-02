@@ -11,6 +11,11 @@ JAVA_HOME=$(/usr/libexec/java_home)
 #JAVA_HOME='/Library/Java/JavaVirtualMachines/java/Contents/Home'
 export PATH="$JAVA_HOME/bin:$PATH"
 
+# Include custom bin location in path
+export PATH="$HOME/data/user/bin:$PATH"
+
+EMACS_HOME="/Applications/Emacs.app/Contents/MacOS"
+export PATH="$EMACS_HOME/bin:$PATH"
 
 # Mac Ports
 MAC_PORTS='/opt/local/bin:/opt/local/sbin'
