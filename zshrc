@@ -24,42 +24,13 @@ ssh-add -D 1&> /dev/null
 cat $HOME/.ssh/keys | xargs ssh-add 1&> /dev/null
 
 ##>> Editor
-# Emacs invocation is deferred to the target platform's _editor 
+# Emacs invocation is deferred to the target platform's _editor
 # implementation
 editor() {
     _editor $@
 }
 
 export EDITOR=editor
-
-###>> Aliases
-alias sudo='sudo '
-
-# Platform specific aliases
-#alias sys=
-#alias sysi=
-#alias syss=
-#alias sysp=
-#alias sysS=
-#alias tmp=
-
-alias mc='LC_ALL=en_US.utf8 LANG=en_UK.utf8 mc'
-
-alias ll='ls -lha'
-alias l='ls -lh'
-
-alias cdd='cd $HOME/data/Documents'
-alias cdp='cd $HOME/data/projects'
-alias p='print -l'
-alias pp='p $path'
-
-# editor
-alias e='$EDITOR'
-
-alias s='git'
-alias ss='s status'
-alias sc='s commit -a -m '
-alias sp='s push origin'
 
 ##>> Shell customization
 # shell history
@@ -74,14 +45,14 @@ setopt \
     hist_ignore_all_dups
 
 setopt \
-  autocd \
-  extendedglob \
-  extendedhistory \
-  nomatch \
-  promptsubst \
-  completealiases
+    autocd \
+    nomatch \
+    promptsubst \
+    extendedglob \
+    extendedhistory
+    # completealiases
 
-# Use vi like for command line 
+# Use vi like for command line
 bindkey -v
 
 # Make jj instead of esc go into normal-mode
@@ -105,9 +76,46 @@ bindkey "^r" history-incremental-search-backward
 # change $fpath before calling compinit
 fpath=($HOME/.zsh/functions $fpath)
 autoload -Uz compinit
-autoload -Uz complist
+#autoload -Uz complist
 autoload -Uz zutil
 compinit
+
+###>> Aliases
+alias sudo='sudo '
+
+# Platform specific aliases
+#alias sys=
+#alias sysi=
+#alias syss=
+#alias sysp=
+#alias sysS=
+#alias tmp=
+
+alias mc='LC_ALL=en_US.utf8 LANG=en_UK.utf8 mc'
+
+alias ll='ls -lha'
+alias l='ls -lh'
+
+_cdp() {
+    cd $HOME/data/projects/$@
+}
+
+alias cdd='cd $HOME/data/Documents'
+alias cdp=_cdp
+alias p='print -l'
+alias pp='p $path'
+
+# editor
+alias e='$EDITOR'
+
+# See http://nuclearsquid.com/writings/git-tricks-tips-workflows/
+alias g='git'
+alias gs='g status'
+alias ga='g add'
+alias gc='g commit -a -m'
+alias gp='g push'
+alias gpo='g push origin'
+#complete -o default -o nospace -F _git g
 
 ##>> Colordiff
 # alias colordiff if it's on the path
@@ -160,7 +168,7 @@ git_prompt_size () {
  promptgit="$(git_dirty)"
  ${#${(S%%)promptgit//$~zero/}}
 }
- 
+
 unpushed () {
   $git cherry -v @{upstream} 2>/dev/null
 }
@@ -173,7 +181,7 @@ git_need_push () {
     echo " %{$fg_bold[red]%}!%{$reset_color%}"
   fi
 }
- 
+
 
 # calculate cmd extends
 function precmd {
