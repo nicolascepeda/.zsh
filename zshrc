@@ -114,6 +114,7 @@ alias gs='g status'
 alias ga='g add'
 alias gc='g commit -a -m'
 alias gp='g push'
+alias gu='g pull'
 alias gpo='g push origin'
 #complete -o default -o nospace -F _git g
 
