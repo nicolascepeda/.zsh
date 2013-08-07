@@ -9,7 +9,7 @@
 # located in '/Library/Java/JavaVirtualMachines/*' by default.
 JAVA_HOME=$(/usr/libexec/java_home)
 #JAVA_HOME='/Library/Java/JavaVirtualMachines/java/Contents/Home'
-export PATH="$JAVA_HOME/bin:$PATH"
+#export PATH="$JAVA_HOME/bin:$PATH"
 
 # Include custom bin location in path
 export PATH="$HOME/data/user/bin:$PATH"
