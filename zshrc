@@ -53,25 +53,25 @@ setopt \
     # completealiases
 
 # Use vi like for command line
-bindkey -v
+bindkey -e
 
 # Make jj instead of esc go into normal-mode
-bindkey -M viins 'jj' vi-cmd-mode
+#bindkey -M viins 'jj' vi-cmd-mode
 
 bindkey "^r" history-incremental-search-backward
 # Moving around
-#bindkey "^L" forward-char
+#bindkey "^d" forward-char
 #bindkey "^H" backward-char
-#bindkey "^W" forward-word
-#bindkey "^B" backward-word
+bindkey "^N" forward-word
+bindkey "^T" backward-word
 
 # Killing
-#bindkey "^D" kill-char
+bindkey "^D" kill-char
 #bindkey "^X" kill-char
 #bindkey "^X" backward-kill-char
-#bindkey "^K" kill-word
-#bindkey "^D" backward-kill-word
-#bindkey "^L" kill-whole-line
+bindkey "^L" kill-word
+bindkey "^P" backward-kill-word
+bindkey "^K" kill-whole-line
 
 # change $fpath before calling compinit
 fpath=($HOME/.zsh/functions $fpath)
