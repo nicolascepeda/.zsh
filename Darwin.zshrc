@@ -14,6 +14,8 @@ export LSCOLORS='cxfxcxdxbxegedabagacad'
 ###>> Aliases
 alias ls='ls -G'
 
+alias o='open '
+
 alias tmp='cd $HOME/Downloads'
 
 alias sys='sudo port '
