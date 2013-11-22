@@ -1,4 +1,3 @@
-
 # ZSH dot files
 
 This is my personal zsh setup. I'm aware that further automation is possible, e.g. Holman's 
@@ -20,6 +19,11 @@ Now symlink `.zsh/zshrc` to `~` as follows
     $ ln -s .zsh/zshrc .zshrc
 
 That's it!
+
+You may want to change your default shell to zsh. In OSx type `chsh -s /bin/zsh`. For Linux the same command should do it.
+
+# Notes on the arch
+TODO
 
 # Questions?
 Get back to me!
