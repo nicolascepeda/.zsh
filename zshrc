@@ -117,7 +117,7 @@ alias gp='g push'
 alias gpo='g push origin'
 alias gu='g pull'
 alias gb='g branch'
-alias gp='g tag'
+alias gt='g tag'
 #complete -o default -o nospace -F _git g
 
 ##>> Colordiff
