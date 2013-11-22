@@ -118,6 +118,7 @@ alias gpo='g push origin'
 alias gu='g pull'
 alias gb='g branch'
 alias gt='g tag'
+alias gch='g checkout'
 #complete -o default -o nospace -F _git g
 
 ##>> Colordiff
