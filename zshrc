@@ -119,6 +119,7 @@ alias gu='g pull'
 alias gb='g branch'
 alias gt='g tag'
 alias gch='g checkout'
+alias gm='g merge'
 #complete -o default -o nospace -F _git g
 
 ##>> Colordiff
