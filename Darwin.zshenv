@@ -3,7 +3,7 @@
 # adds the stuff in front of the $PATH (I'm tired of trying
 # to protect $PATH ordering).
 
-# Java 
+# Java
 # Once Apple removes Java Preferences pane the command below will
 # no longer work. This currently evaluates to Java 7. JVMs are
 # located in '/Library/Java/JavaVirtualMachines/*' by default.
@@ -16,6 +16,13 @@ export PATH="$ANDROID_HOME/tools:$PATH"
 
 # Include custom bin location in path
 export PATH="$HOME/data/user/bin:$PATH"
+
+# JavaScript console
+# I've created a subdir $JSC_HOME/bin and symlinked jsc to there as I don't
+# want to expose the contents of $JSC_HOME.
+# Checkout http://www.phpied.com/javascript-shell-scripting/ for further ado
+JSC_HOME="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources"
+export PATH="$JSC_HOME/bin:$PATH"
 
 EMACS_HOME="/Applications/Emacs.app/Contents/MacOS"
 export PATH="$EMACS_HOME/bin:$PATH"
