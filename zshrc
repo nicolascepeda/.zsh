@@ -20,8 +20,10 @@ fi
 # > cat ~/.ssh/keys
 # /home/me/mykey
 # /home/me/myotherkey
-ssh-add -D 1&> /dev/null
-cat $HOME/.ssh/keys | xargs ssh-add 1&> /dev/null
+if [[ -a $HOME/.ssh/keys ]]; then
+    ssh-add -D 1&> /dev/null
+    cat $HOME/.ssh/keys | xargs ssh-add 1&> /dev/null
+fi
 
 ##>> Editor
 # Emacs invocation is deferred to the target platform's _editor
