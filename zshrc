@@ -6,6 +6,9 @@ source $HOME/.zsh/zshenv
 SYSTEM_DEPENDENT="$HOME/.zsh/$(uname).zshrc"
 HOST_DEPENDENT="$HOME/.zsh/$HOST.zshrc"
 
+LC_ALL=en_US.utf8 
+LANG=en_UK.utf8
+
 if [[ -a $SYSTEM_DEPENDENT ]]; then
     source $SYSTEM_DEPENDENT
 fi

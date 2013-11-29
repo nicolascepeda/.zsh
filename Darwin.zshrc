@@ -15,7 +15,7 @@ export LSCOLORS='cxfxcxdxbxegedabagacad'
 alias ls='ls -G'
 
 alias o='open '
-
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias tmp='cd $HOME/Downloads'
 
 alias sys='sudo port '
@@ -23,4 +23,3 @@ alias sysi='s install '
 alias syss='s search '
 alias sysp='s contents '
 alias sysS='port -d selfupdate'
-
