@@ -13,7 +13,7 @@ Clone the repo to your home folder.
     $ cd ~
     $ git clone git@bitbucket.org:instilled/.zsh.git
 
-Now symlink `.zsh/zshrc` to `~` as follows
+Now symlink `.zsh/zshrc` in `~` as follows
 
     $ cd ~
     $ ln -s .zsh/zshrc .zshrc
