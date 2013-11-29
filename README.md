@@ -3,7 +3,7 @@
 This is my personal zsh setup. I'm aware that further automation is possible, e.g. Holman's 
 [dotfiles][url_holman] project.
 
-You're free to do whathever you want with my dotfiles! Fork it, modify it, share it, ...
+Feel free to do whathever you want with it: Fork it, modify it, share it, ...
 
 [url_holman]: http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/
 
