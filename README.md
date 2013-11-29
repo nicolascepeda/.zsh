@@ -23,8 +23,5 @@ That's it!
 You may want to change your default shell to zsh. In OSx type `chsh -s /bin/zsh`. For Linux the same command should do it.
 On OSx the command does not change the default login shell when remotely loggin in with SSH. Use google to find out.
 
-# Notes on the arch
-TODO
-
 # Questions?
 Get back to me!
