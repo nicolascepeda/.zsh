@@ -1,7 +1,6 @@
 # ZSH dot files
 
-This is my personal zsh setup. I'm aware that further automation is possible, e.g. Holman's 
-[dotfiles][url_holman] project.
+My personal zsh setup. 
 
 Feel free to do whathever you want with it: Fork it, modify it, share it, ...
 
