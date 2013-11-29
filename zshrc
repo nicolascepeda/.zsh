@@ -86,6 +86,7 @@ setopt \
     hist_reduce_blanks \
     hist_ignore_all_dups
 
+# Auto cd -> cdpath, see Darwin.zshenv
 setopt \
     autocd \
     extendedglob \

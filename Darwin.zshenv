@@ -3,6 +3,10 @@
 # adds the stuff in front of the $PATH (I'm tired of trying
 # to protect $PATH ordering).
 
+# This makes cd'ing to frequently used dirs a swift!
+# Credits: http://robots.thoughtbot.com/cding-to-frequently-used-directories-in-zsh
+cdpath=($HOME $HOME/data/Documents $HOME/data/projects $HOME/data/projects/inoft)
+
 # Java
 # Once Apple removes Java Preferences pane the command below will
 # no longer work. This currently evaluates to Java 7. JVMs are
