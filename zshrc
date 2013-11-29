@@ -32,25 +32,6 @@ editor() {
 
 export EDITOR=editor
 
-##>> Shell customization
-# shell history
-# taken from: http://en.gentoo-wiki.com/wiki/Zsh
-export HISTSIZE=1000
-export SAVEHIST=1000 # only saved after logout
-export HISTFILE=$HOME/.zshhist
-setopt \
-    inc_append_history \
-    hist_save_no_dups \
-    hist_reduce_blanks \
-    hist_ignore_all_dups
-
-setopt \
-    autocd \
-    nomatch \
-    promptsubst \
-    extendedglob \
-    extendedhistory
-    # completealiases
 
 # Use vi like for command line
 bindkey -e
@@ -74,11 +55,42 @@ bindkey "^P" backward-kill-word
 bindkey "^K" kill-whole-line
 
 # change $fpath before calling compinit
-fpath=($HOME/.zsh/functions $fpath)
 autoload -Uz compinit
 #autoload -Uz complist
 autoload -Uz zutil
 compinit
+
+##>> Shell customization
+# shell history
+# taken from: http://en.gentoo-wiki.com/wiki/Zsh
+fpath=($HOME/.zsh/functions $fpath)
+
+autoload -U promptinit
+promptinit
+
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+#zstyle :compinstall filename '/home/vagrant/.zshrc'
+
+autoload -Uz zutil
+autoload -Uz compinit
+compinit
+
+export HISTSIZE=1000
+export SAVEHIST=1000 # only saved after logout
+export HISTFILE=$HOME/.zshhist
+setopt \
+    inc_append_history \
+    hist_save_no_dups \
+    hist_reduce_blanks \
+    hist_ignore_all_dups
+
+setopt \
+    autocd \
+    extendedglob \
+    notify \
+    extendedhistory
+    #completealiases
+    #nomatch
 
 ###>> Aliases
 alias sudo='sudo '
