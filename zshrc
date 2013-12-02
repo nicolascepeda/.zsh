@@ -3,20 +3,6 @@
 #export PATH="$HOME/.bin:$PATH"
 source $HOME/.zsh/zshenv
 
-SYSTEM_DEPENDENT="$HOME/.zsh/$(uname).zshrc"
-HOST_DEPENDENT="$HOME/.zsh/$HOST.zshrc"
-
-LC_ALL=en_US.utf8 
-LANG=en_UK.utf8
-
-if [[ -a $SYSTEM_DEPENDENT ]]; then
-    source $SYSTEM_DEPENDENT
-fi
-
-if [[ -a $HOST_DEPENDENT ]]; then
-    source $HOST_DEPENDENT
-fi
-
 # Make ssh keys known to ssh-agent.
 # This will load the keys defined in $HOME/.ssh/keys
 # Expects absolute path to key file, one per line, e.g.
@@ -89,7 +75,25 @@ setopt \
     hist_reduce_blanks \
     hist_ignore_all_dups
 
-# Auto cd -> cdpath, see Darwin.zshenv
+# Portable colors. I can't remember where
+# I got that from.
+autoload colors zsh/terminfo
+if [[ "$terminfo[colors]" -ge 8 ]]; then
+    colors
+fi
+
+for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+    eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+    eval PR_LIGHT_$color='%{$terminfo[none]$fg[${(L)color}]%}'
+    (( count = $count + 1 ))
+done
+PR_NO_COLOUR="%{$terminfo[sgr0]%}"
+
+PRMT_COLOR=$PR_YELLOW
+PRMT_COLOR_LIGHT=$PR_LIGHT_YELLOW
+
+# Auto cd -> cdpath, see Darwin.zshenv or other platform specific
+# configuration
 setopt \
     autocd \
     extendedglob \
@@ -100,26 +104,9 @@ setopt \
 
 ###>> Aliases
 alias sudo='sudo '
-
-# Platform specific aliases
-#alias sys=
-#alias sysi=
-#alias syss=
-#alias sysp=
-#alias sysS=
-#alias tmp=
-
 alias mc='LC_ALL=en_US.utf8 LANG=en_UK.utf8 mc'
-
 alias ll='ls -lha'
 alias l='ls -lh'
-
-_cdp() {
-    cd $HOME/data/projects/$@
-}
-
-alias cdd='cd $HOME/data/Documents'
-alias cdp=_cdp
 alias p='print -l'
 alias pp='p $path'
 
@@ -143,6 +130,21 @@ alias gm='g merge'
 ##>> Colordiff
 # alias colordiff if it's on the path
 hash colordiff 2>/dev/null >/dev/null && alias diff='colordiff'
+
+##>> System and host agnostic overrides & extensions
+SYSTEM_DEPENDENT="$HOME/.zsh/$(uname).zshrc"
+HOST_DEPENDENT="$HOME/.zsh/$HOST.zshrc"
+
+LC_ALL=en_US.utf8
+LANG=en_UK.utf8
+
+if [[ -a $SYSTEM_DEPENDENT ]]; then
+    source $SYSTEM_DEPENDENT
+fi
+
+if [[ -a $HOST_DEPENDENT ]]; then
+    source $HOST_DEPENDENT
+fi
 
 ##>> Prompt
 # credits:
@@ -250,18 +252,7 @@ setprompt () {
  # need this so the prompt will work.
  setopt prompt_subst
 
- autoload colors zsh/terminfo
- if [[ "$terminfo[colors]" -ge 8 ]]; then
-   colors
- fi
 
- # crazy hack to get portable colorcodes
- for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-   eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-   eval PR_LIGHT_$color='%{$terminfo[none]$fg[${(L)color}]%}'
-       (( count = $count + 1 ))
- done
- PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
   # see if we can use extended characters to look nicer.
  typeset -A altchar

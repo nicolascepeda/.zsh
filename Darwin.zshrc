@@ -13,6 +13,7 @@ export LSCOLORS='cxfxcxdxbxegedabagacad'
 
 ###>> Aliases
 alias ls='ls -G'
+alias e='_editor'
 
 alias o='open '
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
