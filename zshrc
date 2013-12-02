@@ -13,15 +13,7 @@ if [[ -a $HOME/.ssh/keys ]]; then
     ssh-add -D 1&> /dev/null
     cat $HOME/.ssh/keys | xargs ssh-add 1&> /dev/null
 fi
-
-##>> Editor
-# Emacs invocation is deferred to the target platform's _editor
-# implementation
-editor() {
-    _editor $@
-}
-
-export EDITOR=editor
+export EDITOR=emacs
 
 
 # Use vi like for command line
@@ -89,8 +81,8 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
 done
 PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
-PRMT_COLOR=$PR_YELLOW
-PRMT_COLOR_LIGHT=$PR_LIGHT_YELLOW
+PRMT_CLR=$PR_YELLOWP
+PRMT_CLR_LGHT=$PR_LIGHT_YELLOW
 
 # Auto cd -> cdpath, see Darwin.zshenv or other platform specific
 # configuration
