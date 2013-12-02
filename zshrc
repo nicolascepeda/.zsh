@@ -48,6 +48,8 @@ compinit
 # taken from: http://en.gentoo-wiki.com/wiki/Zsh
 fpath=($HOME/.zsh/functions $fpath)
 
+autoload -U v
+
 autoload -U promptinit
 promptinit
 
