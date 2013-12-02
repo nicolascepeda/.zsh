@@ -52,8 +52,8 @@ autoload -U promptinit
 promptinit
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
-#zstyle :compinstall filename '/home/vagrant/.zshrc'
 
+autoload -U zmv
 autoload -Uz zutil
 autoload -Uz compinit
 compinit
@@ -101,6 +101,8 @@ alias ll='ls -lha'
 alias l='ls -lh'
 alias p='print -l'
 alias pp='p $path'
+
+alias mv='zmv'
 
 # editor
 alias e='$EDITOR'
