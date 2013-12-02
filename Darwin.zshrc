@@ -11,6 +11,8 @@ _editor() {
 ###>> Colorized 'ls'
 export LSCOLORS='cxfxcxdxbxegedabagacad'
 
+PRMT_CLR=$PR_YELLOW
+
 ###>> Aliases
 alias ls='ls -G'
 alias e='_editor'

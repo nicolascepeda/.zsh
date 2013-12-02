@@ -67,8 +67,8 @@ setopt \
     hist_reduce_blanks \
     hist_ignore_all_dups
 
-# Portable colors. I can't remember where
-# I got that from.
+# Portable colors.
+# SO: http://stackoverflow.com/questions/6159856/how-do-zsh-ansi-colour-codes-work
 autoload colors zsh/terminfo
 if [[ "$terminfo[colors]" -ge 8 ]]; then
     colors
@@ -81,7 +81,7 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
 done
 PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
-PRMT_CLR=$PR_YELLOWP
+PRMT_CLR=$PR_YELLOW
 PRMT_CLR_LGHT=$PR_LIGHT_YELLOW
 
 # Auto cd -> cdpath, see Darwin.zshenv or other platform specific
@@ -260,8 +260,8 @@ setprompt () {
 
  # left prompt
  PROMPT='$PR_SET_CHARSET\
-%(!.%SROOT%s.%n)$PR_LIGHT_YELLOW@%m\
-$PR_NO_COLOUR %$PR_PWDLEN<...<$PR_YELLOW${(%):-%~}$(git_dirty)$(git_need_push)\
+%(!.%SROOT%s.%n)$PRMT_CLR@%m\
+$PR_NO_COLOUR %$PR_PWDLEN<...<$PRMT_CLR_LGHT${(%):-%~}$(git_dirty)$(git_need_push)\
 %<<$PR_NO_COLOUR $PR_SHIFT_IN${(e)PR_FILLBAR}$PR_SHIFT_OUT
 $PR_NO_COLOUR%! %(!.$PR_RED.$PR_WHITE)%#$PR_NO_COLOUR '
  #PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[yellow]%}%m %{$fg[green]%}%~ %{$reset_color%}%% "
