@@ -1,0 +1,58 @@
+#!/bin/zsh
+
+#
+# Function v executes a command on a remote Vagrant host.
+# Thus invocation will only be successful if invoked in a
+# vagrant enabled project.
+#
+# If inkoved with one arg will run the command on the remote host.
+# In case of two or more args assumes the first arg to be
+# a path to cd into, relative to the mounted shared folder,
+# typically '/vagrant'. The remaining args form the command
+# to be run on the guest.
+#
+# It assumes the vagrant host is up, i.e. 'vagrant up'
+# has been called prior to calling the function.
+# TODO: shall we automatically 'vagrant up' if the vm
+# is not running?
+#
+
+if [[ "$#" -lt 1 ]]; then
+    print "Run a command in the context of a Vagrant Guest."
+    print "The function expects at least 1 argument."
+    return
+fi
+
+v='vagrant ssh -c'
+vshare='/vagrant'
+args=
+cdir=$PWD
+vpath=""
+
+# Determine relative path from vagrant root to PWD.
+# vpath will point to the relative path in the guest
+# os that matches its PWD equivalent on the host.
+# In case Vagrantfile was not found or we're aleardy
+# in the vagrant root, vpath will be set to the
+# empty string.
+
+while ( [ 1 ] ); do
+    # I think it is safe to assume /Vagrantfile will never
+    # exist
+    if [[ "$cdir" == "/" ]]; then vpath="" break; fi
+    if [[ -f "$cdir/Vagrantfile" ]]; then break; fi
+    vpath="${cdir##*/}/$vpath"
+
+    # It is a bit of an overkill to spawn a subprocess for
+    # each iteration just to expand $cdir. We've to come up
+    # with a better solution here.
+    cdir=`cd $cdir/.. && pwd`
+done
+
+args="\"$1\""
+if [[ ! -z "$vpath" ]]; then
+    args="'cd $vshare/$vpath && $@'"
+fi
+
+#echo "$v \"$args\""
+eval "$v $args -- -t"

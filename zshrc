@@ -48,7 +48,7 @@ compinit
 # taken from: http://en.gentoo-wiki.com/wiki/Zsh
 fpath=($HOME/.zsh/functions $fpath)
 
-autoload -U v
+autoload -U vagrant-exec
 
 autoload -U promptinit
 promptinit
@@ -104,11 +104,14 @@ alias l='ls -lh'
 alias p='print -l'
 alias pp='p $path'
 
+# An augmented 'mv'
 alias mv='zmv'
 
-# editor
 alias e='$EDITOR'
 
+alias v='vagrant-exec'
+
+# Git related aliases
 # See http://nuclearsquid.com/writings/git-tricks-tips-workflows/
 alias g='git'
 alias gs='g status'
