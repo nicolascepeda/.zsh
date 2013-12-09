@@ -16,7 +16,8 @@ fi
 export EDITOR=emacs
 
 
-# Use vi like for command line
+# Use emacs like keys for cl
+# http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
 bindkey -e
 
 # Make jj instead of esc go into normal-mode
@@ -26,16 +27,16 @@ bindkey "^r" history-incremental-search-backward
 # Moving around
 #bindkey "^d" forward-char
 #bindkey "^H" backward-char
-bindkey "^N" forward-word
-bindkey "^T" backward-word
+#bindkey "^N" forward-word
+#bindkey "^T" backward-word
 
 # Killing
-bindkey "^D" kill-char
+#bindkey "^D" kill-char
 #bindkey "^X" kill-char
 #bindkey "^X" backward-kill-char
-bindkey "^L" kill-word
-bindkey "^P" backward-kill-word
-bindkey "^K" kill-whole-line
+#bindkey "^L" kill-word
+#bindkey "^P" backward-kill-word
+#bindkey "^K" kill-whole-line
 
 # change $fpath before calling compinit
 autoload -Uz compinit
@@ -109,7 +110,8 @@ alias mv='zmv'
 
 alias e='$EDITOR'
 
-alias v='vagrant-exec'
+alias v='vagrant'
+alias vx='vagrant-exec'
 
 # Git related aliases
 # See http://nuclearsquid.com/writings/git-tricks-tips-workflows/
