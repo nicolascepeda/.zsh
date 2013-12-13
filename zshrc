@@ -3,12 +3,17 @@
 #export PATH="$HOME/.bin:$PATH"
 source $HOME/.zsh/zshenv
 
+
 # Make ssh keys known to ssh-agent.
 # This will load the keys defined in $HOME/.ssh/keys
 # Expects absolute path to key file, one per line, e.g.
 # > cat ~/.ssh/keys
 # /home/me/mykey
 # /home/me/myotherkey
+SYSTEM_DEPENDENT_SSH="$HOME/.zsh/$(uname).ssh"
+if [[ -a "$SYSTEM_DEPENDENT_SSH" ]]; then
+    source $SYSTEM_DEPENDENT_SSH
+fi
 if [[ -a $HOME/.ssh/keys ]]; then
     ssh-add -D 1&> /dev/null
     cat $HOME/.ssh/keys | xargs ssh-add 1&> /dev/null
@@ -83,9 +88,9 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
     (( count = $count + 1 ))
 done
 PR_NO_COLOUR="%{$terminfo[sgr0]%}"
-
 PRMT_CLR=$PR_YELLOW
 PRMT_CLR_LGHT=$PR_LIGHT_YELLOW
+
 
 # Auto cd -> cdpath, see Darwin.zshenv or other platform specific
 # configuration

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 ###>> SSH
 # Arch does (as do other distributions) not export ssh-agent
@@ -9,4 +9,4 @@
 
 # see https://wiki.archlinux.org/index.php/SSH_Keys#SSH_agents
 #eval $(ssh-agent) # this would spawn a nef ssh-agent with every login
-eval $(keychain --eval --agents ssh -Q --quiet amazon-bitmaster)
+eval $(keychain --eval --agents ssh -Q --quiet)
