@@ -4,19 +4,16 @@
 source $HOME/.zsh/zshenv
 
 
-# Make ssh keys known to ssh-agent.
-# This will load the keys defined in $HOME/.ssh/keys
-# Expects absolute path to key file, one per line, e.g.
-# > cat ~/.ssh/keys
-# /home/me/mykey
-# /home/me/myotherkey
+# Make all keys in ~/.ssh/keys_auto available to the
+# ssh by adding them with ssh-agent.
 SYSTEM_DEPENDENT_SSH="$HOME/.zsh/$(uname).ssh"
 if [[ -a "$SYSTEM_DEPENDENT_SSH" ]]; then
     source $SYSTEM_DEPENDENT_SSH
 fi
-if [[ -a $HOME/.ssh/keys ]]; then
+if [[ -d $HOME/.ssh/keys_auto ]]; then
+    # Delete & add keys
     ssh-add -D 1&> /dev/null
-    cat $HOME/.ssh/keys | xargs ssh-add 1&> /dev/null
+    find "$HOME/.ssh/keys_auto" | grep keys_auto/ | xargs ssh-add 1&> /dev/null
 fi
 export EDITOR=emacs
 
@@ -61,7 +58,7 @@ promptinit
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 
-autoload -U zmv
+#autoload -U zmv
 autoload -Uz zutil
 autoload -Uz compinit
 compinit
@@ -109,9 +106,6 @@ alias ll='ls -lha'
 alias l='ls -lh'
 alias p='print -l'
 alias pp='p $path'
-
-# An augmented 'mv'
-alias mv='zmv'
 
 alias e='$EDITOR'
 
