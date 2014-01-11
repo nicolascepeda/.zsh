@@ -11,15 +11,20 @@ cdpath=($HOME $HOME/data/Documents $HOME/data/projects $HOME/data/projects/inoft
 # Once Apple removes Java Preferences pane the command below will
 # no longer work. This currently evaluates to Java 7. JVMs are
 # located in '/Library/Java/JavaVirtualMachines/*' by default.
-JAVA_HOME=$(/usr/libexec/java_home)
+JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 #JAVA_HOME='/Library/Java/JavaVirtualMachines/java/Contents/Home'
 #export PATH="$JAVA_HOME/bin:$PATH"
+
+M2_HOME="/Library/Java/maven/current"
+export PATH="$M2_HOME/bin:$PATH"
+
+
 ANDROID_HOME="/Applications/adt/sdk"
 export PATH="$ANDROID_HOME/platform-tools:$PATH"
 export PATH="$ANDROID_HOME/tools:$PATH"
 
 # Include custom bin location in path
-export PATH="$HOME/data/user/bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
 
 # JavaScript console
 # I've created a subdir $JSC_HOME/bin and symlinked jsc to there as I don't
@@ -36,9 +41,9 @@ MAC_PORTS='/opt/local/bin:/opt/local/sbin'
 export PATH="$MAC_PORTS:$PATH"
 
 # Haskell
-export CABAL_HOME="$HOME/.cabal"
-export HASKELL_HOME="$HOME/Library/Haskell"
-export PATH="$CABAL_HOME/bin:$HASKELL_HOME/bin:$PATH"
+#export CABAL_HOME="$HOME/.cabal"
+#export HASKELL_HOME="$HOME/Library/Haskell"
+#export PATH="$CABAL_HOME/bin:$HASKELL_HOME/bin:$PATH"
 
 # ImageMagick
 #export MAGICK_HOME="/Applications/ImageMagick"

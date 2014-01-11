@@ -13,10 +13,11 @@ export LSCOLORS='cxfxcxdxbxegedabagacad'
 
 PRMT_CLR=$PR_YELLOW
 
-alias vagrant='ruby -r /Users/me/data/ext/vagrant/bundle/bundler/setup.rb /Users/me/data/ext/vagrant/bin/vagrant'
-
+#alias vagrant='ruby -r /Users/me/data/ext/vagrant/bundle/bundler/setup.rb /Users/me/data/ext/vagrant/bin/vagrant'
 
 ###>> Aliases
+alias readlink='greadlink'
+alias mvn="JAVA_HOME=$JAVA_HOME mvn"
 alias ls='ls -G'
 alias e='_editor'
 
