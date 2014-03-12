@@ -167,18 +167,21 @@ git_branch() {
 }
 
 git_dirty() {
-  st=$($git status 2>/dev/null | tail -n 1)
-  if [[ $st == "" ]]
-  then
-    echo ""
-  else
-    if [[ "$st" =~ ^nothing ]]
+    st=$($git status 2>/dev/null | tail -n 1)
+    # Dirty hack to circumvent a change that broke the dirty flag in
+    # a recent git version (I don't know exactly which one).
+    st2=$($git status 2>/dev/null | tail -n 2)
+    if [[ ( $st == "" ) && ( $st2 == "" ) ]]
     then
-      echo "%{$reset_color%} on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
+        echo ""
     else
-      echo "%{$reset_color%} on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
+        if [[ "$st" =~ ^nothing ]]
+        then
+            echo "%{$reset_color%} on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
+        else
+            echo "%{$reset_color%} on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
+        fi
     fi
-  fi
 }
 
 git_prompt_info () {
