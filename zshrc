@@ -15,7 +15,7 @@ if [[ -d $HOME/.ssh/keys_auto ]]; then
     ssh-add -D 1&> /dev/null
     find "$HOME/.ssh/keys_auto" | grep keys_auto/ | xargs ssh-add 1&> /dev/null
 fi
-export EDITOR=emacs
+export EDITOR=_editor
 
 
 # Use emacs like keys for cl

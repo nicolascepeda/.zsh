@@ -11,7 +11,7 @@ cdpath=($HOME $HOME/data/Documents $HOME/data/projects $HOME/data/projects/inoft
 # Once Apple removes Java Preferences pane the command below will
 # no longer work. This currently evaluates to Java 7. JVMs are
 # located in '/Library/Java/JavaVirtualMachines/*' by default.
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.7.0_25)
 
 #JAVA_HOME='/Library/Java/JavaVirtualMachines/java/Contents/Home'
 #export PATH="$JAVA_HOME/bin:$PATH"
