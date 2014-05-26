@@ -101,7 +101,6 @@ setopt \
 
 ###>> Aliases
 alias sudo='sudo '
-alias mc='LC_ALL=en_US.utf8 LANG=en_UK.utf8 mc'
 alias ll='ls -lha'
 alias l='ls -lh'
 alias p='print -l'
