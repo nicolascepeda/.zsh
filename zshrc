@@ -16,7 +16,7 @@ if [[ -d $HOME/.ssh/keys_auto ]]; then
     ssh-add -D 1&> /dev/null
     find "$HOME/.ssh/keys_auto" | grep keys_auto/ | xargs ssh-add 1&> /dev/null
 fi
-export EDITOR=emacs
+export EDITOR=_editor
 
 
 # Use emacs like keys for cl
@@ -102,7 +102,6 @@ setopt \
 
 ###>> Aliases
 alias sudo='sudo '
-alias mc='LC_ALL=en_US.utf8 LANG=en_UK.utf8 mc'
 alias ll='ls -lha'
 alias l='ls -lh'
 alias p='print -l'

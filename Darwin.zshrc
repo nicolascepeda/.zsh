@@ -30,3 +30,6 @@ alias sysi='s install '
 alias syss='s search '
 alias sysp='s contents '
 alias sysS='port -d selfupdate'
+
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
