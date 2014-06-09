@@ -10,6 +10,7 @@ SYSTEM_DEPENDENT_SSH="$HOME/.zsh/$(uname).ssh"
 if [[ -a "$SYSTEM_DEPENDENT_SSH" ]]; then
     source $SYSTEM_DEPENDENT_SSH
 fi
+
 if [[ -d $HOME/.ssh/keys_auto ]]; then
     # Delete & add keys
     ssh-add -D 1&> /dev/null

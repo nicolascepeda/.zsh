@@ -17,7 +17,7 @@ PRMT_CLR=$PR_YELLOW
 
 ###>> Aliases
 alias readlink='greadlink'
-alias mvn="JAVA_HOME=$JAVA_HOME mvn"
+#alias mvn="JAVA_HOME=$JAVA_HOME mvn"
 alias ls='ls -G'
 alias e='_editor'
 

@@ -16,13 +16,9 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 #JAVA_HOME='/Library/Java/JavaVirtualMachines/java/Contents/Home'
 #export PATH="$JAVA_HOME/bin:$PATH"
 
-M2_HOME="/Library/Java/maven/current"
-export PATH="$M2_HOME/bin:$PATH"
-
-
-ANDROID_HOME="/Applications/adt/sdk"
-export PATH="$ANDROID_HOME/platform-tools:$PATH"
-export PATH="$ANDROID_HOME/tools:$PATH"
+#ANDROID_HOME="/Applications/adt/sdk"
+#export PATH="$ANDROID_HOME/platform-tools:$PATH"
+#export PATH="$ANDROID_HOME/tools:$PATH"
 
 # Include custom bin location in path
 export PATH="$HOME/.bin:$PATH"
