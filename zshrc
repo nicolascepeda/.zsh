@@ -133,7 +133,7 @@ hash colordiff 2>/dev/null >/dev/null && alias diff='colordiff'
 
 ##>> System and host agnostic overrides & extensions
 SYSTEM_DEPENDENT="$HOME/.zsh/$(uname).zshrc"
-HOST_DEPENDENT="$HOME/.zsh/$HOST.zshrc"
+HOST_DEPENDENT="$HOME/.zsh/$(hostname -s).zshrc"
 
 LC_ALL=en_US.utf8
 LANG=en_UK.utf8

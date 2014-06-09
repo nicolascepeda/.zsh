@@ -4,7 +4,7 @@
 # to protect $PATH ordering).
 
 SYSTEM_DEPENDENT="$HOME/.zsh/$(uname).zshenv"
-HOST_DEPENDENT="$HOME/.zsh/$HOST.zshenv"
+HOST_DEPENDENT="$HOME/.zsh/$(hostname -s).zshenv"
 
 if [[ -a $SYSTEM_DEPENDENT ]]; then
 source $SYSTEM_DEPENDENT
