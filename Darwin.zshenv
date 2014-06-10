@@ -14,7 +14,7 @@ cdpath=($HOME $HOME/data/Documents $HOME/data/projects)
 
 
 export GRAILS_HOME=/opt/grails-2.3.5
-export PATH="$GARAILS_HOME/bin:$PATH"
+export PATH="$GRAILS_HOME/bin:$PATH"
 
 
 #JAVA_HOME='/Library/Java/JavaVirtualMachines/java/Contents/Home'
