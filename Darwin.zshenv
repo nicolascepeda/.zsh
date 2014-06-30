@@ -12,6 +12,8 @@ cdpath=($HOME $HOME/data/Documents $HOME/data/projects)
 # no longer work. This currently evaluates to Java 7. JVMs are
 # located in '/Library/Java/JavaVirtualMachines/*' by default.
 
+# Make sure no main window is being shown when invoking 'lein repl'
+export LEIN_JVM_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Djava.awt.headless=true -Xmx1g"
 
 export GRAILS_HOME=/opt/grails-2.3.5
 export PATH="$GRAILS_HOME/bin:$PATH"
