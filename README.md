@@ -10,6 +10,8 @@ My personal zsh setup. It will
 * Defines some useful aliases. Type `alias` to get a list of define aliases.
 * Binds `emacsclient` to `e` key
 * Default editor `EDITOR` is `vim`
+* Supports arch and host specific `zshrc` and `zshenv` files. Load order
+  is arch then host specific files.
 
 Feel free to do whathever you want with it: Fork it, modify it, share it, ...
 see [Dotfiles are meant to be forked][url_holman].
