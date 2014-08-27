@@ -1,5 +1,23 @@
 #!/bin/zsh
 
+###>> SSH
+# Handling of ssh identities is easier in OSx. ssh-agent has
+# a keyring binding and will load all keys automatically when
+# added with the -K option.
+
+# Only add keys not yet loaded
+if [[ -d $HOME/.ssh/keys_auto ]]; then
+    for k in $(ls $HOME/.ssh/keys_auto)
+    do
+        _i=`ssh-add -l | grep "$k"`
+        _loaded=$?
+
+        if [ "$_loaded" -eq 1 ]; then
+            ssh-add -K "$HOME/.ssh/keys_auto/$k"
+        fi
+    done
+fi
+
 _editor() {
     $EMACS_HOME/bin/emacsclient \
             --no-wait \

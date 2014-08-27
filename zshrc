@@ -3,21 +3,7 @@
 #export PATH="$HOME/.bin:$PATH"
 source $HOME/.zsh/zshenv
 
-
-# Make all keys in ~/.ssh/keys_auto available to the
-# ssh by adding them with ssh-agent.
-SYSTEM_DEPENDENT_SSH="$HOME/.zsh/$(uname).ssh"
-if [[ -a "$SYSTEM_DEPENDENT_SSH" ]]; then
-    source $SYSTEM_DEPENDENT_SSH
-fi
-
-if [[ -d $HOME/.ssh/keys_auto ]]; then
-    # Delete & add keys
-    ssh-add -D 1&> /dev/null
-    find "$HOME/.ssh/keys_auto" | grep keys_auto/ | xargs ssh-add 1&> /dev/null
-fi
-export EDITOR=_editor
-
+export EDITOR=vim
 
 # Use emacs like keys for cl
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
