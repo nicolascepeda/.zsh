@@ -25,7 +25,7 @@ Clone the repo to your home folder. It may be a good idea to fork the repository
 and then clone it from your fork.
 
     $ cd ~
-    $ git clone git@bitbucket.org:instilled/.zsh.git
+    $ git clone git@github.com:nicolascepeda/.zsh.git
 
 Now symlink `.zsh/zshrc` and `.zsh/zshenv` to `~`:
 
